@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Details</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { border-collapse: collapse; width: 60%; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background-color: #f2f2f2; }
+    #errorMessage { color: red; margin-top: 10px; }
+    #loadingMessage { margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>User Details</h1>
+  <button id="loadUsersBtn">Load User Details</button>
+  <div id="loadingMessage" style="display:none;">Loading...</div>
+  <div id="errorMessage"></div>
+  <table id="userTable" style="display:none;">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody id="userTableBody"></tbody>
+  </table>
+
+  <script>
+    async function fetchUserDetails() {
+      const errorDiv = document.getElementById('errorMessage');
+      const loadingDiv = document.getElementById('loadingMessage');
+      const userTable = document.getElementById('userTable');
+      const tbody = document.getElementById('userTableBody');
+
+      errorDiv.textContent = '';
+      userTable.style.display = 'none';
+      loadingDiv.style.display = 'block';
+
+      try {
+        const response = await fetch('/users');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const users = await response.json();
+        loadingDiv.style.display = 'none';
+
+        if (users.length === 0) {
+          errorDiv.textContent = 'No users found.';
+          return;
+        }
+
+        tbody.innerHTML = '';
+        users.forEach(user => {
+          const row = document.createElement('tr');
+          const usernameCell = document.createElement('td');
+          usernameCell.textContent = user.username;
+          const emailCell = document.createElement('td');
+          emailCell.textContent = user.email;
+          row.appendChild(usernameCell);
+          row.appendChild(emailCell);
+          tbody.appendChild(row);
+        });
+        userTable.style.display = 'table';
+      } catch (error) {
+        loadingDiv.style.display = 'none';
+        errorDiv.textContent = 'Failed to load user details: ' + error.message;
+      }
+    }
+
+    document.getElementById('loadUsersBtn').addEventListener('click', fetchUserDetails);
+  </script>
+</body>
+</html>
