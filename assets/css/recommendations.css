@@ -1,0 +1,76 @@
+@import url('base.css');
+
+.container { padding-top: 44px; padding-bottom: 80px; }
+
+.container > h2 {
+  text-align: center;
+  margin-bottom: 8px;
+}
+.container > h2::after {
+  content: "";
+  display: block;
+  width: 84px;
+  height: 8px;
+  margin: 14px auto 36px;
+  background-image: radial-gradient(circle 2.5px, var(--gold) 100%, transparent 101%);
+  background-size: 14px 8px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.career-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+/* generic card shape for whatever the JS renders into #career-results */
+.career-cards > * {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px 22px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.career-cards > *:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+}
+
+.career-cards h3,
+.career-cards h4 {
+  color: var(--forest-deep);
+  margin-bottom: 6px;
+}
+
+.career-cards p {
+  font-size: 0.93rem;
+  margin-bottom: 10px;
+}
+
+.career-cards i,
+.career-cards .fa,
+.career-cards [class*="fa-"] {
+  color: var(--gold-dark);
+  margin-right: 8px;
+}
+
+.career-cards a,
+.career-cards button {
+  display: inline-block;
+  margin-top: 8px;
+  background: var(--forest);
+  color: #fbf8f1;
+  font-size: 0.86rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.career-cards a:hover,
+.career-cards button:hover { background: var(--forest-deep); }

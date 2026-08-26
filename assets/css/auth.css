@@ -1,0 +1,92 @@
+@import url('base.css');
+
+body {
+  min-height: 100vh;
+}
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(900px 420px at 85% 0%, rgba(217,164,65,0.14), transparent 60%),
+    linear-gradient(180deg, var(--forest-deep), var(--forest) 60%, var(--paper) 60%);
+}
+
+.form-box {
+  width: 100%;
+  max-width: 380px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lift);
+  padding: 40px 34px 34px;
+  position: relative;
+}
+
+/* waypoint trail across the top of the card */
+.form-box::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 34px;
+  right: 34px;
+  height: 3px;
+  background-image: radial-gradient(circle 1.5px, var(--gold) 100%, transparent 101%);
+  background-size: 12px 3px;
+  background-repeat: repeat-x;
+}
+
+.form-box h2 {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+#auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#auth-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  font-family: var(--body);
+  font-size: 0.95rem;
+  color: var(--ink);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+#auth-form input:focus {
+  border-color: var(--forest-light);
+  box-shadow: 0 0 0 3px rgba(47,111,78,0.14);
+}
+
+#auth-form input.hidden {
+  display: none;
+}
+
+#auth-form .btn {
+  margin-top: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.toggle-text {
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  margin: 16px 0 0;
+}
+
+#toggle-link {
+  color: var(--forest);
+  font-weight: 600;
+  cursor: pointer;
+}
+#toggle-link:hover { color: var(--forest-deep); text-decoration: underline; }

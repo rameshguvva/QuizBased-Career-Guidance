@@ -1,0 +1,119 @@
+@import url('base.css');
+
+body {
+  background: var(--paper);
+}
+
+.quiz-container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 56px 24px 90px;
+}
+
+.quiz-container h1 {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.quiz-container h1::after {
+  content: "";
+  display: block;
+  width: 108px;
+  height: 8px;
+  margin: 14px auto 40px;
+  background-image: radial-gradient(circle 2.5px, var(--gold) 100%, transparent 101%);
+  background-size: 14px 8px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.question {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px 24px 20px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+/* number each question like a waypoint on the path */
+.question {
+  counter-increment: q;
+}
+
+#quiz-form {
+  counter-reset: q;
+  display: flex;
+  flex-direction: column;
+}
+
+.question::before {
+  content: counter(q);
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--forest);
+  color: #fbf8f1;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 4px var(--paper);
+}
+
+.question p {
+  margin: 4px 0 12px;
+  font-weight: 600;
+  color: var(--forest-deep);
+  font-family: var(--body);
+}
+
+.question label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.question label:hover { background: var(--paper-alt); }
+
+.question input[type="radio"] {
+  accent-color: var(--forest);
+  width: 17px;
+  height: 17px;
+  flex: none;
+}
+
+.question br { display: none; } /* labels are already stacked via flex on #quiz-form > .question */
+
+#quiz-form button[type="submit"] {
+  margin-top: 12px;
+  align-self: center;
+  background: var(--gold);
+  color: var(--forest-deep);
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 13px 34px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+#quiz-form button[type="submit"]:hover {
+  background: var(--gold-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lift);
+}

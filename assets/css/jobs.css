@@ -1,0 +1,198 @@
+@import url('base.css');
+
+.container {
+  max-width: 960px;
+  padding-top: 48px;
+  padding-bottom: 90px;
+}
+
+.container > h1 {
+  text-align: center;
+}
+.container > h1::after {
+  content: "";
+  display: block;
+  width: 84px;
+  height: 8px;
+  margin: 14px auto 34px;
+  background-image: radial-gradient(circle 2.5px, var(--gold) 100%, transparent 101%);
+  background-size: 14px 8px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+/* ---------- filters ---------- */
+
+.filters {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+  margin-bottom: 36px;
+}
+
+.filters input[type="text"],
+.filters select {
+  padding: 11px 13px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  font-family: var(--body);
+  font-size: 0.93rem;
+  color: var(--ink);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.filters input[type="text"]:focus,
+.filters select:focus {
+  border-color: var(--forest-light);
+  box-shadow: 0 0 0 3px rgba(47,111,78,0.14);
+}
+
+.filters .range {
+  grid-column: span 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: center;
+}
+
+.filters .range label {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  font-family: var(--mono);
+}
+
+.filters .range span {
+  color: var(--forest-deep);
+  font-weight: 600;
+}
+
+.filters input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line);
+  accent-color: var(--gold-dark);
+}
+
+.filters #search {
+  grid-column: 1 / -1;
+  justify-self: start;
+  background: var(--forest);
+  color: #fbf8f1;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.filters #search:hover {
+  background: var(--forest-deep);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 720px) {
+  .filters { grid-template-columns: 1fr; }
+}
+
+/* ---------- results ---------- */
+
+.job-results {
+  display: grid;
+  gap: 16px;
+}
+
+/* generic card shape for whatever markup jobs.js injects into #results */
+.job-results > * {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px 22px;
+  position: relative;
+  padding-left: 30px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.job-results > *::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: 20px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.job-results > *:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+
+.job-results h3,
+.job-results h4 {
+  color: var(--forest-deep);
+  margin-bottom: 4px;
+}
+
+.job-results p { font-size: 0.9rem; margin-bottom: 6px; }
+
+.job-results a {
+  display: inline-block;
+  margin-top: 6px;
+  color: var(--forest);
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: none;
+}
+.job-results a:hover { text-decoration: underline; }
+
+/* ---------- pagination ---------- */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 36px;
+}
+
+.pagination button {
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--forest-deep);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 9px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.pagination button:hover {
+  background: var(--paper-alt);
+  border-color: var(--forest-light);
+}
+
+.pagination button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pagination #page {
+  font-family: var(--mono);
+  font-weight: 600;
+  color: var(--forest);
+  min-width: 24px;
+  text-align: center;
+}

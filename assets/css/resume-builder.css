@@ -1,0 +1,210 @@
+@import url('base.css');
+
+.container {
+  max-width: 1080px;
+  padding-top: 40px;
+  padding-bottom: 90px;
+}
+
+.container > h1 {
+  text-align: center;
+  margin-bottom: 8px;
+}
+.container > h1::after {
+  content: "";
+  display: block;
+  width: 84px;
+  height: 8px;
+  margin: 14px auto 36px;
+  background-image: radial-gradient(circle 2.5px, var(--gold) 100%, transparent 101%);
+  background-size: 14px 8px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+/* header link + h1 span both columns */
+.container > a,
+.container > h1 {
+  grid-column: 1 / -1;
+}
+
+/* ---------- form ---------- */
+
+.resume-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 26px;
+}
+
+.resume-form input[type="text"],
+.resume-form textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  font-family: var(--body);
+  font-size: 0.93rem;
+  color: var(--ink);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.resume-form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.resume-form input:focus,
+.resume-form textarea:focus {
+  border-color: var(--forest-light);
+  box-shadow: 0 0 0 3px rgba(47,111,78,0.14);
+}
+
+.resume-form label {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--forest-deep);
+  margin-top: 4px;
+}
+
+.resume-form input[type="file"] {
+  font-size: 0.86rem;
+  padding: 6px 0;
+}
+
+.resume-form button {
+  margin-top: 10px;
+  background: var(--gold);
+  color: var(--forest-deep);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.resume-form button:hover {
+  background: var(--gold-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lift);
+}
+
+/* ---------- preview ---------- */
+
+.resume-preview {
+  position: sticky;
+  top: 24px;
+}
+
+.resume-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lift);
+  padding: 34px 32px;
+}
+
+.resume-card .header {
+  text-align: center;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+}
+
+#profile-pic {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 12px;
+  display: block;
+  border: 3px solid var(--paper-alt);
+}
+
+#preview-name {
+  margin-bottom: 2px;
+  color: var(--forest-deep);
+}
+
+#preview-title {
+  margin: 0;
+  color: var(--gold-dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.resume-card .contact {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 0.86rem;
+  margin-bottom: 20px;
+  color: var(--ink-soft);
+}
+
+.resume-card .contact strong { color: var(--forest-deep); }
+
+.resume-card .section {
+  margin-bottom: 18px;
+}
+
+.resume-card .section h3 {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--forest);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+  font-family: var(--body);
+  font-weight: 600;
+}
+
+.resume-card .section p {
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--ink);
+  white-space: pre-line;
+}
+
+#preview-skills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#preview-skills li {
+  background: var(--paper-alt);
+  color: var(--forest-deep);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+@media (max-width: 820px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .resume-preview {
+    position: static;
+  }
+}

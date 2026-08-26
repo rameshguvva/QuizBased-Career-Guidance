@@ -1,0 +1,94 @@
+@import url('base.css');
+
+.container {
+  padding-top: 48px;
+  padding-bottom: 90px;
+}
+
+.container > h1 {
+  text-align: center;
+}
+.container > h1::after {
+  content: "";
+  display: block;
+  width: 84px;
+  height: 8px;
+  margin: 14px auto 6px;
+  background-image: radial-gradient(circle 2.5px, var(--gold) 100%, transparent 101%);
+  background-size: 14px 8px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.container > p {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.comparison-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 36px;
+}
+
+.comparison-form select {
+  min-width: 220px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  font-family: var(--body);
+  font-size: 0.95rem;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.comparison-form select:focus {
+  border-color: var(--forest-light);
+  box-shadow: 0 0 0 3px rgba(47,111,78,0.14);
+}
+
+#compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+#compare-table th,
+#compare-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  font-size: 0.94rem;
+}
+
+#compare-table th {
+  background: var(--forest-deep);
+  color: #fbf8f1;
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+#compare-table tr:last-child td { border-bottom: none; }
+
+#compare-table tr:nth-child(even) td { background: var(--paper-alt); }
+
+#compare-table td:first-child {
+  font-weight: 600;
+  color: var(--forest-deep);
+  width: 28%;
+}
+
+#compare-table td.value,
+#compare-table td:not(:first-child) {
+  font-family: var(--mono);
+  color: var(--ink-soft);
+}
